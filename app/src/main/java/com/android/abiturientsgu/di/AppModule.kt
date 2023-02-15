@@ -1,7 +1,11 @@
 package com.android.abiturientsgu.di
 
 import androidx.room.Room
+import com.android.abiturientsgu.data.auth.AuthRepository
+import com.android.abiturientsgu.data.auth.AuthRepositoryImpl
 import com.android.abiturientsgu.data.auth.local.AuthLocalDataSource
+import com.android.abiturientsgu.data.auth.remote.AuthRemoteDataSource
+import com.android.abiturientsgu.data.auth.remote.AuthRemoteDataSourceImpl
 import com.android.abiturientsgu.data.core.db.AbiturienDb
 import com.android.abiturientsgu.data.core.network.RetrofitServices
 import com.android.abiturientsgu.data.events.EventsRepoImpl
@@ -104,6 +108,25 @@ val AppModule = module {
     }
 
 
+    ////////////////
+
+    single<AuthRepository> {
+        AuthRepositoryImpl(
+            remoteDataSource = get(),
+            localDataSource = get()
+        )
+    }
+
+    single<AuthRemoteDataSource> {
+        AuthRemoteDataSourceImpl(
+            rService = get()
+        )
+    }
+
+    single {
+        AuthLocalDataSource(context = androidContext())
+    }
+
     single {
         val database = get<AbiturienDb>()
         database.eventDao()
@@ -156,9 +179,5 @@ val AppModule = module {
         }.build()
     }
 
-
-    single {
-        AuthLocalDataSource(context = androidContext())
-    }
 
 }
