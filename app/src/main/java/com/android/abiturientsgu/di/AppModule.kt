@@ -1,15 +1,15 @@
 package com.android.abiturientsgu.di
 
 import androidx.room.Room
-import androidx.room.RoomDatabase
+import com.android.abiturientsgu.data.auth.local.AuthLocalDataSource
 import com.android.abiturientsgu.data.core.db.AbiturienDb
-import com.android.abiturientsgu.data.profile.ProfileRepoImpl
 import com.android.abiturientsgu.data.core.network.RetrofitServices
 import com.android.abiturientsgu.data.events.EventsRepoImpl
 import com.android.abiturientsgu.data.events.locale.EventsLocalDataSource
 import com.android.abiturientsgu.data.events.locale.EventsLocalDataSourceImpl
 import com.android.abiturientsgu.data.events.remote.EventsRemoteDataSource
 import com.android.abiturientsgu.data.events.remote.EventsRemoteDataSourceImpl
+import com.android.abiturientsgu.data.profile.ProfileRepoImpl
 import com.android.abiturientsgu.data.profile.locale.ProfileLocalDataSource
 import com.android.abiturientsgu.data.profile.locale.ProfileLocalDataSourceImpl
 import com.android.abiturientsgu.data.profile.remote.ProfileRemoteDataSource
@@ -150,11 +150,15 @@ val AppModule = module {
             AbiturienDb::class.java,
             "abiturient_sgu__database"
         ).apply {
-           setQueryCallback({ sqlQuery, bindArgs ->
-               println("SQL Query: $sqlQuery SQL Args: $bindArgs")
-           }, Executors.newSingleThreadExecutor())
-        }.
-        build()
+            setQueryCallback({ sqlQuery, bindArgs ->
+                println("SQL Query: $sqlQuery SQL Args: $bindArgs")
+            }, Executors.newSingleThreadExecutor())
+        }.build()
+    }
+
+
+    single {
+        AuthLocalDataSource(context = androidContext())
     }
 
 }

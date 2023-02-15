@@ -1,15 +1,24 @@
 package com.android.abiturientsgu.data.auth.local
 
-import com.android.abiturientsgu.domain.models.User
-import kotlinx.coroutines.flow.Flow
+import android.content.Context
+import androidx.appcompat.app.AppCompatActivity
 
-interface AuthLocalDataSource {
 
-    var currentUser: User?
+class AuthLocalDataSource(val context: Context) {
 
-    fun observeCurrentUser(): Flow<User?>
+    private val sharedPreferences =
+        context.getSharedPreferences("sp", AppCompatActivity.MODE_PRIVATE)
+
+    fun saveCurUSer(userLogin: String) {
+        sharedPreferences.edit().putString("login", userLogin).apply()
+    }
+
+    fun getCurUserLogin() {
+        sharedPreferences.getString("login", "")
+    }
+
+    fun logout() {
+        sharedPreferences.edit().putString("login", "").apply()
+    }
 }
 
-fun AuthLocalDataSource.logOut() {
-    this.currentUser = null
-}
