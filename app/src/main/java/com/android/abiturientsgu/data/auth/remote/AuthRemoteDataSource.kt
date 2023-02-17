@@ -33,7 +33,7 @@ class AuthRemoteDataSourceImpl(private val rService: RetrofitServices) : AuthRem
                     profile.classs ?: "",
                     profile.tel ?: "",
                     profile.themes?.joinToString(separator = ",") ?: ""
-                )
+                ).response
             )
         } catch (e: Exception) {
             Result.failure(e)
@@ -42,7 +42,7 @@ class AuthRemoteDataSourceImpl(private val rService: RetrofitServices) : AuthRem
 
     override suspend fun logIn(login: String, password: User.Password): Result<String> =
         try {
-            Result.success(rService.Login(login, password.value))
+            Result.success(rService.Login(login, password.value).response)
         } catch (e: Exception) {
             Result.failure(e)
         }

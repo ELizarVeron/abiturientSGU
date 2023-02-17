@@ -13,9 +13,9 @@ class AuthLocalDataSource(val context: Context) {
         sharedPreferences.edit().putString("login", userLogin).apply()
     }
 
-    fun getCurUserLogin() {
-        sharedPreferences.getString("login", "")
-    }
+    fun getCurUserLogin() =
+        sharedPreferences.getString("login", null)
+
 
     fun logout() {
         sharedPreferences.edit().putString("login", "").apply()

@@ -1,38 +1,42 @@
 package com.android.abiturientsgu.ui
 
 import android.os.Bundle
-import android.view.View
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI.setupWithNavController
 import com.android.abiturientsgu.R
-import com.android.abiturientsgu.presentation.viewmodels.ProfileViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class MainActivity : AppCompatActivity() {
     lateinit var navController: NavController
+    lateinit var login: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splash)
-        val viewModel by viewModel<ProfileViewModel>()
+        setContentView(R.layout.activity_main)
+
+
+        Log.d("OLOLO", "MainActivity onCreate")
+
+        login = intent.getStringExtra("login")!!
 
         runApp()
-       /* viewModel.getProfile()
-        viewModel.liveData.observe(this){
+        /* viewModel.getProfile()
+         viewModel.liveData.observe(this){
 
-            runApp()
-        }*/
+             runApp()
+         }*/
 
     }
 
-    private fun runApp(){
-        setContentView(R.layout.activity_main)
-        navController = Navigation.findNavController(this, com.android.abiturientsgu.R.id.nav_host_fragment)
-        val bottomNavigationView = findViewById<BottomNavigationView>(com.android.abiturientsgu.R.id.bottom_nav)
+    private fun runApp() {
+
+        navController = Navigation.findNavController(this, R.id.main_nav_host_fragment)
+        val bottomNavigationView =
+            findViewById<BottomNavigationView>(R.id.bottom_nav)
         setupWithNavController(bottomNavigationView, navController)
 
         /*val bottomNavigationView =

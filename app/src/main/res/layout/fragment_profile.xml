@@ -1,17 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".ui.ProfileFragment">
 
-    <TextView
-        android:id="@+id/textView"
-        android:textSize="30sp"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:layout_width="451dp"
-        android:layout_height="72dp"
-        android:text="ProfileFragment" />
+    <Button
+        android:id="@+id/b_logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="logout" />
 
-</FrameLayout>
+    <ScrollView
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+
+        <LinearLayout
+            android:id="@+id/linearLayoutProfile"
+            android:orientation="vertical"
+            android:padding="30dp"
+
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+
+            <TextView
+
+                android:text="Профиль"
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/family"
+                android:padding="10dp"
+                android:text="фамаилия"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/name"
+                android:padding="10dp"
+                android:text="Имя"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/patr"
+                android:padding="10dp"
+                android:text="Отчесвто"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/school"
+                android:padding="10dp"
+                android:text="school"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/classs"
+                android:padding="10dp"
+                android:text="classs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tel"
+                android:padding="10dp"
+                android:text="tel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+
+                    android:text="Интересы"
+                    android:padding="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <Button
+                    android:id="@+id/b_edit_interests"
+                    android:text="edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+</LinearLayout>

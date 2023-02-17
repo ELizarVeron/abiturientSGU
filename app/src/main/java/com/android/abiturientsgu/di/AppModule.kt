@@ -1,7 +1,6 @@
 package com.android.abiturientsgu.di
 
 import androidx.room.Room
-import com.android.abiturientsgu.data.auth.AuthRepository
 import com.android.abiturientsgu.data.auth.AuthRepositoryImpl
 import com.android.abiturientsgu.data.auth.local.AuthLocalDataSource
 import com.android.abiturientsgu.data.auth.remote.AuthRemoteDataSource
@@ -23,9 +22,11 @@ import com.android.abiturientsgu.data.specialty.locale.SpecialtiesLocalDataSourc
 import com.android.abiturientsgu.data.specialty.locale.SpecialtiesLocalDataSourceImpl
 import com.android.abiturientsgu.data.specialty.remote.SpecialtiesRemoteDataSource
 import com.android.abiturientsgu.data.specialty.remote.SpecialtiesRemoteDataSourceImpl
+import com.android.abiturientsgu.domain.repository.AuthRepo
 import com.android.abiturientsgu.domain.repository.EventsRepo
 import com.android.abiturientsgu.domain.repository.ProfileRepo
 import com.android.abiturientsgu.domain.repository.SpecialtiesRepo
+import com.android.abiturientsgu.presentation.viewmodels.AuthViewModel
 import com.android.abiturientsgu.presentation.viewmodels.EventsViewModel
 import com.android.abiturientsgu.presentation.viewmodels.ProfileViewModel
 import com.android.abiturientsgu.presentation.viewmodels.SpecialtiesViewModel
@@ -53,6 +54,10 @@ val AppModule = module {
 
     viewModel {
         SpecialtiesViewModel(repository = get())
+    }
+
+    viewModel {
+        AuthViewModel(repository = get())
     }
 ////////////////////////////////////////////
     single<ProfileRepo> {
@@ -110,7 +115,7 @@ val AppModule = module {
 
     ////////////////
 
-    single<AuthRepository> {
+    single<AuthRepo> {
         AuthRepositoryImpl(
             remoteDataSource = get(),
             localDataSource = get()

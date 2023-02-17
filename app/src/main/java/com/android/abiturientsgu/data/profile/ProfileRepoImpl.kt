@@ -1,6 +1,7 @@
 package com.android.abiturientsgu.data.profile
 
 
+import android.util.Log
 import com.android.abiturientsgu.data.profile.locale.ProfileLocalDataSource
 import com.android.abiturientsgu.data.profile.remote.ProfileRemoteDataSource
 import com.android.abiturientsgu.domain.models.Profile
@@ -24,12 +25,33 @@ class ProfileRepoImpl(
         return observeProfileFromDB(login)
     }
 
+    override suspend fun updateProfile(profile: Profile): Result<String> {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun updatePass(
+        login: String,
+        oldPass: String,
+        newPass: String
+    ): Result<String> {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun updateInterests(login: String, themes: String): Result<String> {
+        TODO("Not yet implemented")
+    }
+
     private suspend fun getProfileFromApiAndStore(login: String) {
         val profile = remoteDataSource.getProfile(login)
         if (profile.isSuccess) {
-            if(profile.getOrNull() !=null){
+            if (profile.getOrNull() != null) {
                 withContext(Dispatchers.IO) {
-                    localDataSource.insertProfileInfo(profile.getOrNull()!!.toProfileEntity())                }
+                    Log.d(
+                        "OLOLO",
+                        " localDataSource.insertProfileInfo(profile.getOrNull()!!.toProfileEntity())             "
+                    )
+                    localDataSource.insertProfileInfo(profile.getOrNull()!!.toProfileEntity())
+                }
             }
         }
     }

@@ -20,21 +20,20 @@ interface RetrofitServices {
         @Query("classs") classs: String,
         @Query("tel") tel: String,
         @Query("themes") themes: String,
-        ): String
-
+    ): ResponseDto
 
 
     @GET("Login")
     suspend fun Login(
         @Query("login") login: String,
         @Query("pass") pass: String,
-    ): String
+    ): ResponseDto
 
     @GET("CancelRecord")
     suspend fun CancelRecord(
         @Query("login") login: String,
         @Query("eventt") event: Int,
-    ): String
+    ): ResponseDto
 
     @GET("GetAbiturThemes")
     suspend fun GetAbiturThemes(
@@ -78,7 +77,7 @@ interface RetrofitServices {
     suspend fun PostRecord(
         @Query("login") login: String,
         @Query("eventt") eventId: Int,
-    ): String
+    ): ResponseDto
 
 
     @GET("PostReview")  //тут можно оставлять отзыв только к етм мероприятиям,на которые чел был записан
@@ -86,7 +85,7 @@ interface RetrofitServices {
         @Query("login") login: String,
         @Query("eventt") eventId: Int,
         @Query("text") text: String,
-    ): String
+    ): ResponseDto
 
 /////
 
@@ -99,14 +98,14 @@ interface RetrofitServices {
         @Query("school") school: String,
         @Query("classs") classs: String,
         @Query("tel") tel: String,
-    ): String
+    ): ResponseDto
 
 
     @GET("UpdateInterests")
     suspend fun UpdateInterests(
         @Query("login") login: String,
         @Query("themes") themes: String,
-    ): String
+    ): ResponseDto
 
 
     @GET("UpdatePassword")
@@ -114,7 +113,7 @@ interface RetrofitServices {
         @Query("login") login: String,
         @Query("oldpass") oldPass: String,
         @Query("newpass") newPass: String,
-    ): String
+    ): ResponseDto
 
 
 

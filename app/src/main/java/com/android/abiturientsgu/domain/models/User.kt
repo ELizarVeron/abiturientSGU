@@ -23,6 +23,8 @@ data class User(
                 } else {
                     null
                 }
+
+            fun createTESTFUN(value: String): Password = Password(value)
         }
     }
 }

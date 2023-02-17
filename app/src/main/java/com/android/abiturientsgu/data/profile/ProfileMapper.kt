@@ -24,9 +24,17 @@ fun ProfileEntity.toProfile(): Profile {
 
 fun Profile.toProfileEntity(): ProfileEntity {
 
-    val themesList  = themes?.joinToString(separator = ",")
+    var themesList = themes?.joinToString(separator = ",").toString()
+
 
     return ProfileEntity(
-        login,  lastname?:"", name?:"", patronymic?:"", school?:"", classs?:"", tel?:"", themesList?:""
+        login,
+        lastname ?: "",
+        name ?: "",
+        patronymic ?: "",
+        school ?: "",
+        classs ?: "",
+        tel ?: "",
+        themesList
     )
 }

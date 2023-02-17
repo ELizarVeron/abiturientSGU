@@ -20,25 +20,4 @@
         android:name="com.android.abiturientsgu.ui.SpecialtyFragment"
         android:label="fragment_specialty"
         tools:layout="@layout/fragment_specialty" />
-    <fragment
-        android:id="@+id/loginFragment"
-        android:name="com.android.abiturientsgu.ui.LoginFragment"
-        android:label="fragment_login"
-        tools:layout="@layout/fragment_login" >
-        <action
-            android:id="@+id/action_loginFragment_to_registrationFragment"
-            app:destination="@id/registrationFragment" />
-        <action
-            android:id="@+id/action_loginFragment_to_eventsFragment"
-            app:destination="@id/eventsFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/registrationFragment"
-        android:name="com.android.abiturientsgu.ui.RegistrationFragment"
-        android:label="fragment_registration"
-        tools:layout="@layout/fragment_registration" >
-        <action
-            android:id="@+id/action_registrationFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
-    </fragment>
 </navigation>
