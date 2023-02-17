@@ -5,5 +5,13 @@
     <string name="profile">Профиль</string>
     <string name="events">Мероприятия</string>
     <string name="specialty">Направления</string>
+    <string name="registration">Регистрация</string>
+    <string name="register">Зарегестрироваться</string>
+    <string name="authorization">Авторизация</string>
+    <string name="confirm_authorization">Войти</string>
+    <string name="mail">Почтовый адрес</string>
+    <string name="login">Логин</string>
+    <string name="password">Пароль</string>
+    <string name="confirm_password">Подтвердите пароль</string>
     <!-- TODO: Remove or change this placeholder text -->
 </resources>
