@@ -1,14 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LoginLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.LoginFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:id="@+id/authLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="143dp"
+        android:layout_marginBottom="55dp"
+        android:minHeight="48dp"
+        android:text="@string/authorization"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/authUsername"
+        app:layout_constraintStart_toStartOf="parent" />
 
-</FrameLayout>
+    <EditText
+        android:id="@+id/authUsername"
+        android:layout_width="391dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="270dp"
+        android:autofillHints="emailAddress"
+        android:ems="10"
+        android:hint="@string/login"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/authPassword"
+        android:layout_width="391dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        android:minHeight="48dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/authUsername" />
+
+    <Button
+        android:id="@+id/authLogin"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="96dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/confirm_authorization"
+        app:layout_constraintStart_toStartOf="@id/authPassword"
+        app:layout_constraintTop_toBottomOf="@+id/authPassword" />
+
+    <Button
+        android:id="@+id/authRegister"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/register"
+        app:layout_constraintStart_toStartOf="@+id/authLogin"
+        app:layout_constraintTop_toBottomOf="@+id/authLogin" />
+</androidx.constraintlayout.widget.ConstraintLayout>
