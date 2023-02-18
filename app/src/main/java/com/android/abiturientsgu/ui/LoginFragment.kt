@@ -2,11 +2,9 @@ package com.android.abiturientsgu.ui
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.android.abiturientsgu.R
@@ -42,9 +40,13 @@ class LoginFragment : Fragment() {
 
         viewModel.authResult.observe(viewLifecycleOwner) {
             it.onSuccess {
-                Log.d("OLOLO", "LoginFragment   viewModel.authResult   it.onSuccess.")
-                val bundle = bundleOf("login" to et_login.text.toString())
-                startActivity(Intent(requireContext(), MainActivity::class.java), bundle)
+                startActivity(
+                    Intent(
+                        requireActivity(),
+                        MainActivity::class.java
+                    ).putExtra("login", viewModel.currentLogin)
+                )
+
             }
         }
 

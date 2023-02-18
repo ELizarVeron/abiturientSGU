@@ -3,12 +3,13 @@ package com.android.abiturientsgu.presentation.viewmodels
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.android.abiturientsgu.data.auth.AuthRepository
+import com.android.abiturientsgu.domain.repository.AuthRepo
 
-class RegistrationViewModel(private var repository: AuthRepository) : ViewModel() {
+
+class RegistrationViewModel(private var repository: AuthRepo) : ViewModel() {
 
     init {
-        Log.d("Test","RegistrationViewModelCreated")
+        Log.d("Test", "RegistrationViewModelCreated")
     }
 
     var inputLogin = MutableLiveData<String>()

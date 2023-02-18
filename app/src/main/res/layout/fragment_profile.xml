@@ -6,92 +6,123 @@
     android:orientation="vertical"
     tools:context=".ui.ProfileFragment">
 
-    <Button
-        android:id="@+id/b_logout"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="logout" />
+        android:layout_gravity="center"
+        android:layout_marginVertical="20dp">
+
+        <Button
+            android:id="@+id/b_updateprofile"
+            android:layout_marginHorizontal="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="update profile" />
+
+        <Button
+            android:id="@+id/b_logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="logout" />
+
+    </LinearLayout>
+
 
     <ScrollView
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:id="@+id/linearLayoutProfile"
-            android:orientation="vertical"
-            android:padding="30dp"
-
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_width="match_parent">
+
+            android:orientation="vertical"
+            android:padding="30dp">
 
             <TextView
 
-                android:text="Профиль"
-                android:padding="10dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="Профиль" />
 
             <TextView
                 android:id="@+id/family"
-                android:padding="10dp"
-                android:text="фамаилия"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="фамаилия" />
 
             <TextView
                 android:id="@+id/name"
-                android:padding="10dp"
-                android:text="Имя"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="Имя" />
 
             <TextView
                 android:id="@+id/patr"
-                android:padding="10dp"
-                android:text="Отчесвто"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="Отчесвто" />
 
             <TextView
                 android:id="@+id/school"
-                android:padding="10dp"
-                android:text="school"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="school" />
 
             <TextView
                 android:id="@+id/classs"
-                android:padding="10dp"
-                android:text="classs"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="classs" />
 
             <TextView
                 android:id="@+id/tel"
-                android:padding="10dp"
-                android:text="tel"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="tel" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginVertical="20dp"
+                android:paddingVertical="10dp"
                 android:orientation="horizontal">
 
                 <TextView
 
-                    android:text="Интересы"
-                    android:padding="10dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="Интересы" />
 
                 <Button
                     android:id="@+id/b_edit_interests"
-                    android:text="edit"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:text="edit interests" />
+
+                <Button
+                    android:id="@+id/b_edit_pass"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="change pass" />
 
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/inters"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="Интересы" />
 
 
         </LinearLayout>
