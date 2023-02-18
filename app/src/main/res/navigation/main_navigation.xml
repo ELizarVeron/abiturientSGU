@@ -19,5 +19,21 @@
         android:id="@+id/specialtyFragment"
         android:name="com.android.abiturientsgu.ui.SpecialtyFragment"
         android:label="fragment_specialty"
-        tools:layout="@layout/fragment_specialty" />
+        tools:layout="@layout/fragment_specialty">
+        <action
+            android:id="@+id/action_specialtyFragment_to_specialityInfoFragment"
+            app:destination="@id/specialityInfoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/specialityInfoFragment"
+        android:name="com.android.abiturientsgu.ui.SpecialityInfoFragment"
+        android:label="fragment_speciality_info"
+        tools:layout="@layout/fragment_speciality_info">
+        <action
+            android:id="@+id/action_specialityInfoFragment_to_specialtyFragment"
+            app:destination="@id/specialtyFragment" />
+        <argument
+            android:name="spec"
+            app:argType="string" />
+    </fragment>
 </navigation>

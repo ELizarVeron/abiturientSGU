@@ -1,33 +1,38 @@
 package com.android.abiturientsgu.presentation.viewmodels
 
-import android.util.Log
-import androidx.lifecycle.*
-import com.android.abiturientsgu.data.events.EventsRepoImpl
-import com.android.abiturientsgu.data.profile.ProfileRepoImpl
-import com.android.abiturientsgu.domain.models.Event
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
+import androidx.lifecycle.liveData
+import androidx.lifecycle.viewModelScope
 import com.android.abiturientsgu.domain.models.Specialty
-import com.android.abiturientsgu.domain.repository.EventsRepo
 import com.android.abiturientsgu.domain.repository.SpecialtiesRepo
-
 import kotlinx.coroutines.launch
 
 class SpecialtiesViewModel(private var repository: SpecialtiesRepo) : ViewModel() {
+
+    var specialties = liveData<List<Specialty>> {}
+    var specialty = liveData<Specialty> {}
+
     init {
-        Log.d("OLOLO","SpecialtiesViewModel created")
-    }
-
-    var specialtyResult : LiveData<List<Specialty>> = liveData{}
-
-
-    init{
         getSpecialties()
     }
 
     private fun getSpecialties() {
         viewModelScope.launch {
-            specialtyResult  =  repository.fetchSpecialties().asLiveData()
-
+            specialties = repository.fetchSpecialties().asLiveData()
 
         }
     }
+
+    private fun getSpecialty(id: Int) {
+        viewModelScope.launch {
+            specialty = repository.fetchSpecialty(id).asLiveData()
+
+        }
+    }
+
+    fun getSpeciality(id: Int): Specialty? =
+        specialties.value?.first {
+            it.id == id
+        }
 }

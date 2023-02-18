@@ -6,27 +6,49 @@
     android:orientation="vertical"
     tools:context=".ui.ProfileFragment">
 
-    <LinearLayout
+    <TableLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginVertical="20dp">
+        android:layout_marginTop="20dp">
 
-        <Button
-            android:id="@+id/b_updateprofile"
-            android:layout_marginHorizontal="30dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="update profile" />
+        <TableRow>
 
-        <Button
-            android:id="@+id/b_logout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="logout" />
+            <Button
 
-    </LinearLayout>
+                android:id="@+id/b_edit_pass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="change pass" />
 
+            <Button
+                android:id="@+id/b_logout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="logout" />
+
+
+        </TableRow>
+
+
+        <TableRow>
+
+            <Button
+                android:id="@+id/b_edit_interests"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="edit interests" />
+
+            <Button
+                android:id="@+id/b_updateprofile"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="update profile" />
+        </TableRow>
+
+
+    </TableLayout>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -103,17 +125,6 @@
                     android:padding="10dp"
                     android:text="Интересы" />
 
-                <Button
-                    android:id="@+id/b_edit_interests"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="edit interests" />
-
-                <Button
-                    android:id="@+id/b_edit_pass"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="change pass" />
 
             </LinearLayout>
 
