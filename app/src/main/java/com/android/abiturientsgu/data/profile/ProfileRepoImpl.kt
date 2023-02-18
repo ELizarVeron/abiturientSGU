@@ -1,17 +1,15 @@
 package com.android.abiturientsgu.data.profile
 
 
-import android.util.Log
 import com.android.abiturientsgu.data.profile.locale.ProfileLocalDataSource
 import com.android.abiturientsgu.data.profile.remote.ProfileRemoteDataSource
 import com.android.abiturientsgu.domain.models.Profile
+import com.android.abiturientsgu.domain.models.User
 import com.android.abiturientsgu.domain.repository.ProfileRepo
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+
 
 class ProfileRepoImpl(
     private val remoteDataSource: ProfileRemoteDataSource,
@@ -26,19 +24,28 @@ class ProfileRepoImpl(
     }
 
     override suspend fun updateProfile(profile: Profile): Result<String> {
-        TODO("Not yet implemented")
+        val response = CoroutineScope(Dispatchers.IO).async {
+            remoteDataSource.updateProfile(profile)
+        }
+        return response.await()
     }
 
     override suspend fun updatePass(
         login: String,
-        oldPass: String,
-        newPass: String
+        oldPass: User.Password,
+        newPass: User.Password
     ): Result<String> {
-        TODO("Not yet implemented")
+        val response = CoroutineScope(Dispatchers.IO).async {
+            remoteDataSource.updatePass(login, oldPass, newPass)
+        }
+        return response.await()
     }
 
     override suspend fun updateInterests(login: String, themes: String): Result<String> {
-        TODO("Not yet implemented")
+        val response = CoroutineScope(Dispatchers.IO).async {
+            remoteDataSource.updateInterests(login, themes)
+        }
+        return response.await()
     }
 
     private suspend fun getProfileFromApiAndStore(login: String) {
@@ -46,17 +53,15 @@ class ProfileRepoImpl(
         if (profile.isSuccess) {
             if (profile.getOrNull() != null) {
                 withContext(Dispatchers.IO) {
-                    Log.d(
-                        "OLOLO",
-                        " localDataSource.insertProfileInfo(profile.getOrNull()!!.toProfileEntity())             "
-                    )
-                    localDataSource.insertProfileInfo(profile.getOrNull()!!.toProfileEntity())
+
+                localDataSource.insertProfileInfo(profile.getOrNull()!!.toProfileEntity())
                 }
             }
         }
     }
     //загружаем из базы
     private fun observeProfileFromDB(login: String): Flow<Profile> {
+
         return localDataSource.getProfileInfo(login).map { it.toProfile() }
     }
 
