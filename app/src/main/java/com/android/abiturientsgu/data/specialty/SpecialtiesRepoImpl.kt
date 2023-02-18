@@ -1,9 +1,5 @@
 package com.android.abiturientsgu.data.specialty
 
-import com.android.abiturientsgu.data.events.locale.EventsLocalDataSource
-import com.android.abiturientsgu.data.events.remote.EventsRemoteDataSource
-import com.android.abiturientsgu.data.events.toEvent
-import com.android.abiturientsgu.data.events.toEventEntity
 import com.android.abiturientsgu.data.specialty.locale.SpecialtiesLocalDataSource
 import com.android.abiturientsgu.data.specialty.remote.SpecialtiesRemoteDataSource
 import com.android.abiturientsgu.domain.models.Specialty
@@ -43,27 +39,26 @@ class SpecialtiesRepoImpl(
     }
 
 
-
     ///////
     override suspend fun fetchSpecialty(id: Int): Flow<Specialty> {
         CoroutineScope(Dispatchers.IO).launch {
-            getSpecialtyFromApiAndStore()
+            getSpecialtyFromApiAndStore(id)
         }
-        return  observeSpecialtyFromDB(id)
+        return observeSpecialtyFromDB(id)
     }
 
-    private suspend fun getSpecialtyFromApiAndStore() {
-        val specialties = remoteDataSource.getSpecialities()
-        if (specialties.isSuccess) {
-            if(specialties.getOrNull() !=null){
-                localDataSource.deleteAll()
-                localDataSource.insertAll(specialties.getOrNull()!!.map{ it.toSpecialityEntity() })
+    private suspend fun getSpecialtyFromApiAndStore(id: Int) {
+        val specialty = remoteDataSource.getSpeciality(id)
+        if (specialty.isSuccess) {
+            if (specialty.getOrNull() != null) {
+                //  localDataSource.deleteAll()
+                localDataSource.insert(specialty.getOrNull()!!.toSpecialityEntity())
             }
         }
     }
 
     //загружаем из базы
-    private fun observeSpecialtyFromDB(id:Int): Flow<Specialty> {
+    private fun observeSpecialtyFromDB(id: Int): Flow<Specialty> {
         return localDataSource.getById(id).map { it.toSpecialty() }
     }
 }
