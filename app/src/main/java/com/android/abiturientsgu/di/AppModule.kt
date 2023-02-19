@@ -26,10 +26,7 @@ import com.android.abiturientsgu.domain.repository.AuthRepo
 import com.android.abiturientsgu.domain.repository.EventsRepo
 import com.android.abiturientsgu.domain.repository.ProfileRepo
 import com.android.abiturientsgu.domain.repository.SpecialtiesRepo
-import com.android.abiturientsgu.presentation.viewmodels.AuthViewModel
-import com.android.abiturientsgu.presentation.viewmodels.EventsViewModel
-import com.android.abiturientsgu.presentation.viewmodels.ProfileViewModel
-import com.android.abiturientsgu.presentation.viewmodels.SpecialtiesViewModel
+import com.android.abiturientsgu.presentation.viewmodels.*
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidContext
@@ -58,6 +55,10 @@ val AppModule = module {
 
     viewModel {
         AuthViewModel(repository = get())
+    }
+
+    viewModel {
+        RegistrationViewModel(repository = get())
     }
 ////////////////////////////////////////////
     single<ProfileRepo> {
