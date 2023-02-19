@@ -13,7 +13,7 @@ class SpecialityAdapter(
     private val context: Context,
     private val onItemClick: (Int) -> Unit
 ) :
-    RecyclerView.Adapter<SpecialityAdapter.ProductsViewHolder>() {
+    RecyclerView.Adapter<SpecialityAdapter.SpecialityViewHolder>() {
 
     var itemList: List<Specialty> = emptyList()
         @SuppressLint("NotifyDataSetChanged")
@@ -23,12 +23,12 @@ class SpecialityAdapter(
         }
 
     @SuppressLint("SuspiciousIndentation")
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductsViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SpecialityViewHolder {
         val binding = SpecialityItemBinding.inflate(LayoutInflater.from(context), parent, false)
-        return ProductsViewHolder(binding, context)
+        return SpecialityViewHolder(binding, context)
     }
 
-    override fun onBindViewHolder(holder: ProductsViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: SpecialityViewHolder, position: Int) {
         val item = itemList[position]
         holder.bind(item)
     }
@@ -38,7 +38,7 @@ class SpecialityAdapter(
     }
 
 
-    inner class ProductsViewHolder(
+    inner class SpecialityViewHolder(
         private val productItemBinding: SpecialityItemBinding,
         val context: Context
     ) :

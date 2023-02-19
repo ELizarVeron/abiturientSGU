@@ -27,6 +27,11 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        arguments?.getString("newlogin")?.let {
+            et_login.setText(it)
+        }
+
         b_login.setOnClickListener {
             viewModel.auth(
                 et_login.text.toString(),

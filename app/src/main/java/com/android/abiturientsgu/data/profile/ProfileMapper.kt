@@ -6,19 +6,21 @@ import com.android.abiturientsgu.domain.models.Profile
 
 fun ProfileDto.toProfile(): Profile {
 
-    val themesList  = themes.split(",")
+    val themesList = if (themes.isNotBlank()) themes.split(",") else emptyList()
+
 
     return Profile(
-        login,  lastname, name, patronymic, school, classs, tel, themesList
+        login, lastname, name, patronymic, school, classs, tel, themesList
     )
 }
 
 fun ProfileEntity.toProfile(): Profile {
 
-    val themesList  = themes.split(",")
+
+    val themesList = if (themes.isNotBlank()) themes.split(",") else emptyList()
 
     return Profile(
-        login,  lastname, name, patronymic, school, classs, tel, themesList
+        login, lastname, name, patronymic, school, classs, tel, themesList
     )
 }
 
