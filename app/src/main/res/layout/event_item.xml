@@ -3,58 +3,67 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    app:cardCornerRadius="15dp"
-    android:backgroundTint="#C0C9FD"
+    app:cardCornerRadius="20dp"
+    android:backgroundTint="#D3D9FF"
     android:layout_margin="8dp"
+
+
     android:layout_height="wrap_content">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="10dp"
+        android:padding="20dp"
+
 
         app:layout_constraintEnd_toStartOf="@+id/tv_event_title"
         app:layout_constraintStart_toStartOf="@+id/tv_event_title">
 
         <TextView
             android:id="@+id/tv_event_title"
-            android:layout_width="198dp"
-            android:layout_margin="5dp"
+            android:layout_width="174dp"
             android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_marginLeft="5dp"
+
             android:maxLines="4"
-            app:layout_constraintEnd_toStartOf="@id/tv_date"
+            style="@style/BigBlueText"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="Вебинар по web-программированию" />
+            tools:text="Вебинар по web программированию" />
+
 
         <TextView
             android:id="@+id/tv_date"
-            android:layout_marginTop="5dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="144dp"
+            android:layout_height="58dp"
+            style="@style/DataTimeTextView"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="4dp"
             android:paddingHorizontal="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/tv_event_title"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="20.02.2023 15:00:00" />
 
-
         <ImageView
             android:id="@+id/icon_place"
-            android:layout_marginLeft="5dp"
+            android:layout_marginHorizontal="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingTop="10dp"
-            android:src="@drawable/ic_baseline_place_24"
+            android:src="@mipmap/icon_nav"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/tv_place"
             tools:layout_editor_absoluteY="15dp" />
 
         <TextView
             android:id="@+id/tv_place"
+            style="@style/AddressTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:paddingTop="10dp"
+            android:layout_marginLeft="5dp"
             app:layout_constraintStart_toEndOf="@id/icon_place"
             app:layout_constraintTop_toBottomOf="@id/tv_event_title"
             tools:text="г. Сыктывкар, Октябрьский пр-кт, 55, ауд. 245" />
@@ -63,22 +72,27 @@
             android:id="@+id/tv_tags"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="28dp"
+            style="@style/HashTag2"
             android:maxLines="4"
-            android:paddingTop="15dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_place"
             tools:text="#ИТ #Программирование" />
 
         <Button
             android:id="@+id/button_do"
-            android:visibility="gone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/ButtonSubscribe"
+            android:layout_width="143dp"
+
+            android:layout_height="25dp"
+            android:layout_marginStart="172dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/blue_button_back"
             android:text="Записаться"
-            android:layout_marginLeft="5dp"
+            android:textSize="10dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_tags" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_place" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

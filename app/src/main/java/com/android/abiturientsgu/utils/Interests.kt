@@ -5,6 +5,7 @@ enum class Interests(val value: String) {
     PROGRAMMING("Программирование"),
     MATH("Математика"),
     IB("ИБ"),
+    TB("ТБ"),
     PEDAGOGY("Педагогика"),
     LING("Лингвистика"),
     JURIS("Юриспруденция"),

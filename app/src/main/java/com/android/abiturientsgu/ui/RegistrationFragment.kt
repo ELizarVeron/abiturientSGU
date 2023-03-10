@@ -53,7 +53,7 @@ class RegistrationFragment : Fragment() {
 
                     viewModel.createNewUser(
                         et_newlogin.text.toString(),
-                        et_fam.text.toString(),
+                        et_log.text.toString(),
                         et_name.text.toString(),
                         et_patr.text.toString(),
                         et_school.text.toString(),

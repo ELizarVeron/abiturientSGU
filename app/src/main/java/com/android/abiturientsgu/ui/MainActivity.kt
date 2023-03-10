@@ -37,6 +37,9 @@ class MainActivity : AppCompatActivity() {
         navController = Navigation.findNavController(this, R.id.main_nav_host_fragment)
         val bottomNavigationView =
             findViewById<BottomNavigationView>(R.id.bottom_nav)
+        //  bottomNavigationView.setBackgroundColor(Color.WHITE)
+
+
         setupWithNavController(bottomNavigationView, navController)
 
         /*val bottomNavigationView =

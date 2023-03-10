@@ -8,6 +8,7 @@ import com.android.abiturientsgu.domain.models.User
 import com.android.abiturientsgu.domain.repository.ProfileRepo
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.map
 
 
@@ -62,7 +63,21 @@ class ProfileRepoImpl(
     //загружаем из базы
     private fun observeProfileFromDB(login: String): Flow<Profile> {
 
-        return localDataSource.getProfileInfo(login).map { it.toProfile() }
+        return localDataSource.getProfileInfo(login).filterNotNull().map {
+            val themesList = if (!it.themes.isNullOrBlank()) it.themes.split(",") else emptyList()
+
+
+            Profile(
+                it.login,
+                it.lastname,
+                it.name,
+                it.patronymic,
+                it.school,
+                it.classs,
+                it.tel,
+                themesList
+            )
+        }
     }
 
 }

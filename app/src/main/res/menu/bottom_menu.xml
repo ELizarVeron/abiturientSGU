@@ -2,16 +2,19 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/profileFragment"
+        android:icon="@drawable/menu_item_profile_selector"
         android:title="@string/profile"
         android:orderInCategory="3"
         />
     <item
         android:id="@+id/eventsFragment"
+        android:icon="@drawable/menu_item_event_selector"
         android:title="@string/events"
         android:orderInCategory="1"
         />
     <item
         android:id="@+id/specialtyFragment"
+        android:icon="@drawable/menu_item_spec_selector"
         android:title="@string/specialty"
         android:orderInCategory="2"
         />

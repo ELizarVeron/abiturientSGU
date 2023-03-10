@@ -7,15 +7,25 @@
     tools:context=".ui.SpecialtyFragment">
 
     <TextView
-        android:text="Направления"
-        android:padding="20dp"
+        android:layout_margin="20dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="65dp"
+        android:background="@drawable/osn"
+
+        android:textAlignment="textStart"
+        android:padding="20dp"
+        android:textSize="16dp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="Специальности" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_spec"
         android:padding="20dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="70dp"
+
+        />
 
 </LinearLayout>

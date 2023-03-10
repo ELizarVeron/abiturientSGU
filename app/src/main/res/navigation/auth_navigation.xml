@@ -6,24 +6,40 @@
     app:startDestination="@id/loginFragment2">
 
     <fragment
-        android:id="@+id/registrationFragment2"
-        android:name="com.android.abiturientsgu.ui.RegistrationFragment"
-        android:label="fragment_registration"
-        tools:layout="@layout/fragment_registration">
-        <action
-            android:id="@+id/action_registrationFragment2_to_loginFragment2"
-            app:destination="@id/loginFragment2" />
-    </fragment>
-    <fragment
         android:id="@+id/loginFragment2"
         android:name="com.android.abiturientsgu.ui.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login">
-        <action
-            android:id="@+id/action_loginFragment2_to_registrationFragment2"
-            app:destination="@id/registrationFragment2" />
         <argument
             android:name="newlogin"
             app:argType="string" />
+        <action
+            android:id="@+id/action_loginFragment2_to_registrationTwoFragment2"
+            app:destination="@id/registrationTwoFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/registrationContinueFragment"
+        android:name="com.android.abiturientsgu.ui.RegistrationContinueFragment"
+        android:label="RegistrationContinueFragment">
+        <action
+            android:id="@+id/action_registrationContinueFragment_to_loginFragment2"
+            app:destination="@id/loginFragment2" />
+        <action
+            android:id="@+id/action_registrationContinueFragment_to_registrationTwoFragment2"
+            app:destination="@id/registrationTwoFragment2" />
+        <action
+            android:id="@+id/action_registrationContinueFragment_to_loginFragment22"
+            app:destination="@id/loginFragment2" />
+        <argument
+            android:name="stringStepOne"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/registrationTwoFragment2"
+        android:name="com.android.abiturientsgu.ui.RegistrationTwoFragment"
+        android:label="RegistrationTwoFragment">
+        <action
+            android:id="@+id/action_registrationTwoFragment2_to_registrationContinueFragment"
+            app:destination="@id/registrationContinueFragment" />
     </fragment>
 </navigation>

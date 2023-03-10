@@ -1,10 +1,15 @@
 package com.android.abiturientsgu.ui
 
+import android.app.Dialog
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
+import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.android.abiturientsgu.R
@@ -40,7 +45,7 @@ class LoginFragment : Fragment() {
         }
         b_register.setOnClickListener {
             requireView().findNavController()
-                .navigate(R.id.action_loginFragment2_to_registrationFragment2)
+                .navigate(R.id.action_loginFragment2_to_registrationTwoFragment2)
         }
 
         viewModel.authResult.observe(viewLifecycleOwner) {
@@ -53,7 +58,44 @@ class LoginFragment : Fragment() {
                 )
 
             }
+            it.onFailure {
+                showDialog()
+            }
         }
+
+    }
+
+
+    private fun showDialog() {
+        val dialog = Dialog(requireActivity())
+
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setCancelable(false)
+
+        dialog.setContentView(R.layout.main_dialog)
+        dialog.window?.setDimAmount(0.9F)
+
+
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT));
+        dialog.setCanceledOnTouchOutside(true)
+
+
+        (dialog.findViewById(R.id.button) as Button).setOnClickListener {
+            dialog.dismiss()
+        }
+
+
+        /*val body = dialog.findViewById(R.id.body) as TextView
+        body.text = title
+        val yesBtn = dialog.findViewById(R.id.yesBtn) as Button
+        val noBtn = dialog.findViewById(R.id.noBtn) as Button*/
+        /*   yesBtn.setOnClickListener {
+               dialog.dismiss()
+           }
+           noBtn.setOnClickListener {
+               dialog.dismiss()
+           }*/
+        dialog.show()
 
     }
 

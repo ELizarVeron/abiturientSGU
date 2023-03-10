@@ -17,11 +17,14 @@ fun ProfileDto.toProfile(): Profile {
 fun ProfileEntity.toProfile(): Profile {
 
 
-    val themesList = if (themes.isNotBlank()) themes.split(",") else emptyList()
+    val themesList = if (!themes.isNullOrBlank()) themes.split(",") else emptyList()
+
 
     return Profile(
         login, lastname, name, patronymic, school, classs, tel, themesList
     )
+
+
 }
 
 fun Profile.toProfileEntity(): ProfileEntity {

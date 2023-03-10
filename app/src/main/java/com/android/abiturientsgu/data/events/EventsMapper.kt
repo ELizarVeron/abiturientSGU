@@ -5,7 +5,9 @@ import com.android.abiturientsgu.data.events.remote.EventDto
 import com.android.abiturientsgu.domain.models.Event
 
 fun EventDto.toEvent(): Event {
-    val themesList  = themes.split(",")
+    val themesList = themes.split(",").map {
+        if (it[0] == ' ') it.drop(1) else it
+    }
 
     return Event(
         id, eventName, date, themesList, place, annotation, status, record, review
